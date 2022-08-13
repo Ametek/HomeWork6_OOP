@@ -24,23 +24,35 @@ class Mentor:
             else:
                 student.grades[course] = [grade]
         else:
-            return 'Ошибка'
+            print('Ошибка выставления оценки')
+            return
 
 
-best_student = Student('Ruoy', 'Eman', 'you gender')
-# best_student.finished_courses += ['Git']
-best_student.courses_in_progress += ['Python']
-best_student.grades['Git'] = [10, 10, 10, 10, 10]
-best_student.grades['Python'] = [10, 10]
+class Lecturer(Mentor):
+    def __init__(self, name, surname):
+        super().__init__(name, surname)
+
+
+
+class Reviewer(Mentor):
+    def __init__(self, name, surname):
+        super().__init__(name, surname)
+
+
+# best_student = Student('Ruoy', 'Eman', 'you gender')
+# # best_student.finished_courses += ['Git']
+# best_student.courses_in_progress += ['Python']
+# best_student.grades['Git'] = [10, 10, 10, 10, 10]
+# best_student.grades['Python'] = [10, 10]
 
 # print(best_student.finished_courses)
 # print(best_student.courses_in_progress)
 # print(best_student.grades)
 
-cool_mentor = Mentor('Some', 'Buddy')
-cool_mentor.coursed_attached += ['Python']
-# print(cool_mentor.coursed_attached)
-
-cool_mentor.rate_hw(best_student, 'Python', 10)
-
-print(best_student.grades)
+# cool_mentor = Mentor('Some', 'Buddy')
+# cool_mentor.coursed_attached += ['Python']
+# # print(cool_mentor.coursed_attached)
+#
+# cool_mentor.rate_hw(best_student, 'Python', 10)
+#
+# print(best_student.grades)
