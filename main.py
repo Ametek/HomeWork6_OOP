@@ -121,6 +121,31 @@ class Reviewer(Mentor):
         return res
 
 
+def average_course_grade_student(students, course):
+    if all([isinstance(item, Student) for item in students]):
+        average_course_grade = []
+        for student in students:
+            if course in student.grades:
+                average_course_grade += student.grades[course]
+            if average_course_grade:
+                return sum(average_course_grade) / len(average_course_grade)
+    else:
+        return 'В списке должны быть только студенты'
+
+
+def average_course_grade_lecturer(lecturers, course):
+    if all([isinstance(item, Lecturer) for item in lecturers]):
+        average_course_grade = []
+        for lecturer in lecturers:
+            if course in lecturer.grades:
+                average_course_grade += lecturer.grades[course]
+            if average_course_grade:
+                return sum(average_course_grade) / len(average_course_grade)
+    else:
+        return 'В списке должны быть только лекторы'
+
+
+# Инициируем студентов, лекторов и проверяторов
 student1 = Student('Pupkin', 'Vasiliy', 'Male')
 student1.finished_courses += ['Git', 'C++']
 student1.courses_in_progress += ['Python', 'Pascal']
@@ -147,21 +172,23 @@ reviewer1.coursed_attached += ['Git']
 reviewer2 = Reviewer('Zapoi', 'Gusarov')
 reviewer2.coursed_attached += ['Python']
 
+# Проверяем вывод действующих лиц
+# print(student1)
+# print(student2)
+# print(lecturer1)
+# print(lecturer2)
+# print(reviewer1)
+# print(reviewer2)
+
+# Проверяем выставление оценок
+# print(student2.grades)
 # reviewer1.rate_students(student2, 'Git', 8)
-# print(student1.finished_courses)
-# print(student1.courses_in_progress)
-# print(student1.grades)
-# print(student2.finished_courses)
-# print(student2.courses_in_progress)
 # print(student2.grades)
 
-# student1.rate_lecturer(lecturer1, 'Python', 9)
-# print(lecturer1.coursed_attached)
 # print(lecturer1.grades)
-# print(lecturer2.coursed_attached)
-# print(lecturer2.grades)
+# student1.rate_lecturer(lecturer1, 'Python', 6)
+# print(lecturer1.grades)
 
-# print(reviewer2)
-# print(lecturer2)
-# print(student2)
-# print(lecturer1 < lecturer2)
+# Проверяем вывод средних оценок за курс
+# print(average_course_grade_student([student1, student2], 'Git'))
+# print(average_course_grade_lecturer([lecturer1, lecturer2], 'Python'))
